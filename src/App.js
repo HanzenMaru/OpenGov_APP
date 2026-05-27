@@ -137,7 +137,7 @@ const InfoPage = ({ title, onBack, children }) => ( <
 function App() {
     const [view, setView] = useState('landing');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [userEmail, setUserEmail] = useState("");
+    const [_userEmail, setUserEmail] = useState("");
     const [userName, setUserName] = useState("");
     const [fullNameInput, setFullNameInput] = useState("");
     const [emailInput, setEmailInput] = useState("");
@@ -208,7 +208,7 @@ function App() {
 
     const handleSignup = async() => {
         try {
-            const { _data, error } = await supabase.auth.signUp({
+            const { data: _, error } = await supabase.auth.signUp({
                 email: emailInput.trim(),
                 password: passInput,
                 options: {
