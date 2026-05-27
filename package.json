@@ -20,23 +20,13 @@
         "react-scripts": "5.0.1",
         "web-vitals": "^2.1.4"
     },
-    <<
-    << << < HEAD "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
-    },
-    ===
-    === =
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
-    >>>
-    >>> > 268e568 cf6b78365204f2110e5aa7aaf76d4f846 "eslintConfig": {
+    "eslintConfig": {
         "extends": [
             "react-app",
             "react-app/jest"
