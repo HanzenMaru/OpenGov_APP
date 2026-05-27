@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { QRCodeCanvas } from 'qrcode.react';
 import { supabase } from './supabaseClient'; // Connected directly to your client
 import './Admin.css';
-import { BiPlus, BiEdit, BiTrash, BiDownload, BiGridAlt, BiBarChartAlt2, BiQrScan, BiLogOut } from 'react-icons/bi';
+import { BiPlus, BiTrash, BiDownload, BiGridAlt, BiBarChartAlt2, BiQrScan, BiLogOut } from 'react-icons/bi';
 
 const AdminPanel = ({ onLogout }) => {
     const [activeTab, setActiveTab] = useState('dashboard');
@@ -128,37 +128,42 @@ const AdminPanel = ({ onLogout }) => {
         <
         button className = { activeTab === 'dashboard' ? 'active' : '' }
         onClick = {
-            () => setActiveTab('dashboard') } >
+            () => setActiveTab('dashboard')
+        } >
         <
         BiBarChartAlt2 / > Dashboard <
         /button> <
         button className = { activeTab === 'projects' ? 'active' : '' }
         onClick = {
-            () => setActiveTab('projects') } >
+            () => setActiveTab('projects')
+        } >
         <
         BiGridAlt / > Manage Projects <
         /button> <
         button className = { activeTab === 'add' ? 'active' : '' }
         onClick = {
-            () => setActiveTab('add') } >
+            () => setActiveTab('add')
+        } >
         <
         BiPlus / > Add Project <
         /button> <
         button className = { activeTab === 'qr' ? 'active' : '' }
         onClick = {
-            () => setActiveTab('qr') } >
+            () => setActiveTab('qr')
+        } >
         <
         BiQrScan / > QR Codes <
-        /button> <
-        /nav> <
+        /button> < /
+        nav > <
         button className = "admin-logout-btn"
         onClick = { onLogout }
         style = {
-            { marginTop: 'auto' } } >
+            { marginTop: 'auto' }
+        } >
         <
         BiLogOut / > Log Out <
-        /button> <
-        /aside>
+        /button> < /
+        aside >
 
         <
         main className = "admin-main" > {
@@ -172,8 +177,8 @@ const AdminPanel = ({ onLogout }) => {
                 div className = "admin-stat-card" > < h3 > Total Projects < /h3><p>{stats.total}</p > < /div> <
                 div className = "admin-stat-card" > < h3 > Total Budget < /h3><p>₱{stats.budget.toLocaleString()}</p > < /div> <
                 div className = "admin-stat-card" > < h3 > Ongoing < /h3><p>{stats.ongoing}</p > < /div> <
-                div className = "admin-stat-card" > < h3 > Completed < /h3><p>{stats.completed}</p > < /div> <
-                /div> <
+                div className = "admin-stat-card" > < h3 > Completed < /h3><p>{stats.completed}</p > < /div> < /
+                div > <
                 /div>
             )
         }
@@ -187,100 +192,120 @@ const AdminPanel = ({ onLogout }) => {
                 form onSubmit = { handleSubmit }
                 className = "project-form"
                 style = {
-                    { display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '600px', background: '#fff', padding: '20px', borderRadius: '12px' } } >
+                    { display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '600px', background: '#fff', padding: '20px', borderRadius: '12px' }
+                } >
                 <
                 input type = "text"
                 placeholder = "Project Title"
                 value = { title }
                 onChange = {
-                    (e) => setTitle(e.target.value) }
+                    (e) => setTitle(e.target.value)
+                }
                 required / >
                 <
                 input type = "text"
                 placeholder = "Location"
                 value = { location }
                 onChange = {
-                    (e) => setLocation(e.target.value) }
+                    (e) => setLocation(e.target.value)
+                }
                 /> <
                 input type = "number"
                 placeholder = "Total Budget (₱)"
                 value = { totalBudget }
                 onChange = {
-                    (e) => setTotalBudget(e.target.value) }
+                    (e) => setTotalBudget(e.target.value)
+                }
                 /> <
                 input type = "text"
                 placeholder = "Contractor"
                 value = { contractor }
                 onChange = {
-                    (e) => setContractor(e.target.value) }
+                    (e) => setContractor(e.target.value)
+                }
                 /> <
                 div style = {
-                    { display: 'flex', gap: '10px' } } >
+                    { display: 'flex', gap: '10px' }
+                } >
                 <
                 label style = {
-                    { flex: 1 } } > Start Date: < input type = "date"
+                    { flex: 1 }
+                } > Start Date: < input type = "date"
                 value = { startDate }
                 onChange = {
-                    (e) => setStartDate(e.target.value) }
+                    (e) => setStartDate(e.target.value)
+                }
                 /></label >
                 <
                 label style = {
-                    { flex: 1 } } > End Date: < input type = "date"
+                    { flex: 1 }
+                } > End Date: < input type = "date"
                 value = { endDate }
                 onChange = {
-                    (e) => setEndDate(e.target.value) }
+                    (e) => setEndDate(e.target.value)
+                }
                 /></label >
                 <
                 /div> <
                 div style = {
-                    { display: 'flex', gap: '10px' } } >
+                    { display: 'flex', gap: '10px' }
+                } >
                 <
                 input type = "text"
                 placeholder = "Physical Progress (e.g. 45%)"
                 value = { physicalProgress }
                 onChange = {
-                    (e) => setPhysicalProgress(e.target.value) }
+                    (e) => setPhysicalProgress(e.target.value)
+                }
                 /> <
                 input type = "text"
                 placeholder = "Financial Progress (e.g. 60%)"
                 value = { financialProgress }
                 onChange = {
-                    (e) => setFinancialProgress(e.target.value) }
-                /> <
-                /div> <
+                    (e) => setFinancialProgress(e.target.value)
+                }
+                /> < /
+                div > <
                 div style = {
-                    { display: 'flex', gap: '10px' } } >
+                    { display: 'flex', gap: '10px' }
+                } >
                 <
                 select value = { status }
                 onChange = {
-                    (e) => setStatus(e.target.value) }
+                    (e) => setStatus(e.target.value)
+                }
                 style = {
-                    { flex: 1 } } >
+                    { flex: 1 }
+                } >
                 <
                 option value = "Ongoing" > Ongoing < /option> <
                 option value = "Completed" > Completed < /option> <
-                option value = "Suspended" > Suspended < /option> <
-                /select> <
+                option value = "Suspended" > Suspended < /option> < /
+                select > <
                 input type = "text"
                 placeholder = "Emoji Icon (e.g. 🏫)"
                 value = { icon }
                 onChange = {
-                    (e) => setIcon(e.target.value) }
+                    (e) => setIcon(e.target.value)
+                }
                 style = {
-                    { flex: 1 } }
-                /> <
-                /div> <
+                    { flex: 1 }
+                }
+                /> < /
+                div > <
                 textarea placeholder = "Project Description"
                 value = { description }
                 onChange = {
-                    (e) => setDescription(e.target.value) }
+                    (e) => setDescription(e.target.value)
+                }
                 rows = "4" / >
                 <
                 button type = "submit"
                 className = "btn-white-round"
                 style = {
-                    { background: '#1a237e', color: '#fff', padding: '12px', cursor: 'pointer', border: 'none', borderRadius: '8px' } } > Save Project < /button> <
-                /form> <
+                    { background: '#1a237e', color: '#fff', padding: '12px', cursor: 'pointer', border: 'none', borderRadius: '8px' }
+                } > Save Project < /button> < /
+                form > <
                 /div>
             )
         }
@@ -292,30 +317,34 @@ const AdminPanel = ({ onLogout }) => {
                 header > < h2 > Project Database Management < /h2></header >
                 <
                 div style = {
-                    { overflowX: 'auto', background: '#fff', padding: '15px', borderRadius: '12px' } } >
+                    { overflowX: 'auto', background: '#fff', padding: '15px', borderRadius: '12px' }
+                } >
                 <
                 table className = "admin-table"
                 style = {
-                    { width: '100%', borderCollapse: 'collapse' } } >
+                    { width: '100%', borderCollapse: 'collapse' }
+                } >
                 <
                 thead >
                 <
                 tr style = {
-                    { background: '#f4f7fa', textAlign: 'left' } } >
+                    { background: '#f4f7fa', textAlign: 'left' }
+                } >
                 <
                 th > ID Code < /th> <
                 th > Title < /th> <
                 th > Status < /th> <
                 th > Budget < /th> <
                 th > Contractor < /th> <
-                th > Actions < /th> <
-                /tr> <
+                th > Actions < /th> < /
+                tr > <
                 /thead> <
                 tbody > {
                     projects.map(p => ( <
                         tr key = { p.id }
                         style = {
-                            { borderBottom: '1px solid #eee' } } >
+                            { borderBottom: '1px solid #eee' }
+                        } >
                         <
                         td > { p.project_id } < /td> <
                         td > { p.title } < /td> <
@@ -327,17 +356,19 @@ const AdminPanel = ({ onLogout }) => {
                         <
                         button className = "action-btn delete"
                         onClick = {
-                            () => handleDelete(p.id) }
+                            () => handleDelete(p.id)
+                        }
                         style = {
-                            { background: 'none', border: 'none', color: '#e63946', cursor: 'pointer', fontSize: '18px' } } > < BiTrash / > < /button> <
-                        /td> <
+                            { background: 'none', border: 'none', color: '#e63946', cursor: 'pointer', fontSize: '18px' }
+                        } > < BiTrash / > < /button> < /
+                        td > <
                         /tr>
                     ))
                 } <
-                /tbody> <
-                /table> <
-                /div> <
-                /div>
+                /tbody> < /
+                table > <
+                /div> < /
+                div >
             )
         }
 
@@ -349,12 +380,14 @@ const AdminPanel = ({ onLogout }) => {
                 <
                 div className = "qr-grid"
                 style = {
-                    { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '20px', marginTop: '20px' } } > {
+                    { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '20px', marginTop: '20px' }
+                } > {
                     projects.map(p => ( <
                         div className = "qr-card"
                         key = { p.id }
                         style = {
-                            { background: '#fff', padding: '15px', borderRadius: '12px', textAlign: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' } } >
+                            { background: '#fff', padding: '15px', borderRadius: '12px', textAlign: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }
+                        } >
                         <
                         QRCodeCanvas id = { `qr-${p.id}` }
                         value = { `https://opengov.ph/project/${p.project_id}` }
@@ -362,20 +395,23 @@ const AdminPanel = ({ onLogout }) => {
                         level = { "H" }
                         /> <
                         p style = {
-                            { fontWeight: '600', margin: '10px 0', fontSize: '14px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } } > { p.title } < /p> <
+                            { fontWeight: '600', margin: '10px 0', fontSize: '14px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }
+                        } > { p.title } < /p> <
                         button onClick = {
-                            () => downloadQR(p.id) }
+                            () => downloadQR(p.id)
+                        }
                         style = {
-                            { display: 'flex', alignItems: 'center', gap: '5px', margin: '0 auto', padding: '6px 12px', borderRadius: '6px', border: '1px solid #1a237e', background: 'none', color: '#1a237e', cursor: 'pointer' } } > < BiDownload / > Download < /button> <
-                        /div>
+                            { display: 'flex', alignItems: 'center', gap: '5px', margin: '0 auto', padding: '6px 12px', borderRadius: '6px', border: '1px solid #1a237e', background: 'none', color: '#1a237e', cursor: 'pointer' }
+                        } > < BiDownload / > Download < /button> < /
+                        div >
                     ))
                 } <
-                /div> <
-                /div>
+                /div> < /
+                div >
             )
         } <
-        /main> <
-        /div>
+        /main> < /
+        div >
     );
 };
 

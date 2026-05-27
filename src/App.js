@@ -11,28 +11,31 @@ const MobileNav = ({ setView }) => ( <
     <
     button className = "nav-item"
     onClick = {
-        () => setView('dashboard') } >
+        () => setView('dashboard')
+    } >
     <
     IoMdHome size = { 28 }
     /> <
-    span > Home < /span> <
-    /button> <
+    span > Home < /span> < /
+    button > <
     button className = "nav-item"
     onClick = {
-        () => alert("Scanner Initializing...") } >
+        () => alert("Scanner Initializing...")
+    } >
     <
     BiScan size = { 28 }
     /> <
-    span > Scan < /span> <
-    /button> <
+    span > Scan < /span> < /
+    button > <
     button className = "nav-item"
     onClick = {
-        () => setView('projects') } >
+        () => setView('projects')
+    } >
     <
     BiGridAlt size = { 28 }
     /> <
-    span > Projects < /span> <
-    /button> <
+    span > Projects < /span> < /
+    button > <
     /div>
 );
 
@@ -45,61 +48,64 @@ const StatCard = ({ icon, num, p, t, s }) => ( <
     div className = "stat-main" >
     <
     span className = "stat-number" > { num } < /span> <
-    span className = "stat-percent" > ({ p }) < /span> <
-    /div> <
+    span className = "stat-percent" > ({ p }) < /span> < /
+    div > <
     div className = "stat-label" > { t } < /div> <
-    div className = "stat-sublabel" > { s } < /div> <
-    /div> <
+    div className = "stat-sublabel" > { s } < /div> < /
+    div > <
     /div>
 );
 
 const ProjectCard = ({ project, onViewDetails }) => ( <
-    div className = "project-card" >
-    <
-    div className = "project-header" >
-    <
-    span className = "project-title-text" > { project.title } < /span> <
-    span className = "project-id-badge" > { project.project_id } < /span> <
-    /div> <
-    div className = "project-body" >
-    <
-    div className = "project-icon-box" >
-    <
-    span className = "project-emoji" > { project.icon || '🏢' } < /span> <
-    div className = "project-meta" >
-    <
-    span className = "status-label" > { project.status } < /span> <
-    /div> <
-    /div> {
+        div className = "project-card" >
+        <
+        div className = "project-header" >
+        <
+        span className = "project-title-text" > { project.title } < /span> <
+        span className = "project-id-badge" > { project.project_id } < /span> < /
+        div > <
+        div className = "project-body" >
+        <
+        div className = "project-icon-box" >
+        <
+        span className = "project-emoji" > { project.icon || '🏢' } < /span> <
+        div className = "project-meta" >
+        <
+        span className = "status-label" > { project.status } < /span> < /
+        div > <
+        /div> {
         onViewDetails && ( <
             button className = "view-details-btn"
             onClick = {
-                () => onViewDetails(project) } >
+                () => onViewDetails(project)
+            } >
             View Details <
             /button>
         )
     } <
     /div> <
-    div className = "progress-section" >
+div className = "progress-section" >
     <
     div className = "progress-bar-container" >
     <
     div className = "progress-fill physical"
-    style = {
-        { width: project.physical_progress || '0%' } } > < /div> <
-    span className = "progress-text" > { project.physical_progress || '0%' }
-    Physical < /span> <
-    /div> <
+style = {
+    { width: project.physical_progress || '0%' }
+} > < /div> <
+span className = "progress-text" > { project.physical_progress || '0%' }
+Physical < /span> < /
+div > <
     div className = "progress-bar-container" >
     <
     div className = "progress-fill financial"
-    style = {
-        { width: project.financial_progress || '0%' } } > < /div> <
-    span className = "progress-text" > { project.financial_progress || '0%' }
-    Financial < /span> <
-    /div> <
-    /div> <
-    /div>
+style = {
+    { width: project.financial_progress || '0%' }
+} > < /div> <
+span className = "progress-text" > { project.financial_progress || '0%' }
+Financial < /span> < /
+div > <
+    /div> < /
+div >
 );
 
 const InfoPage = ({ title, onBack, children }) => ( <
@@ -110,8 +116,8 @@ const InfoPage = ({ title, onBack, children }) => ( <
     IoMdArrowBack className = "back-btn"
     onClick = { onBack }
     /> <
-    h1 className = "info-title" > { title } < /h1> <
-    /div> <
+    h1 className = "info-title" > { title } < /h1> < /
+    div > <
     div className = "info-content-scroll" > { children } < /div> <
     div className = "info-footer" >
     <
@@ -119,11 +125,11 @@ const InfoPage = ({ title, onBack, children }) => ( <
     <
     span className = "dot active" > < /span> <
     span className = "dot" > < /span> <
-    span className = "dot" > < /span> <
-    /div> <
+    span className = "dot" > < /span> < /
+    div > <
     button className = "skip-btn"
-    onClick = { onBack } > Skip < /button> <
-    /div> <
+    onClick = { onBack } > Skip < /button> < /
+    div > <
     /div>
 );
 
@@ -131,7 +137,7 @@ const InfoPage = ({ title, onBack, children }) => ( <
 function App() {
     const [view, setView] = useState('landing');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [userEmail, setUserEmail] = useState("");
+    //</button>const [userEmail, setUserEmail] = useState("");
     const [userName, setUserName] = useState("");
     const [fullNameInput, setFullNameInput] = useState("");
     const [emailInput, setEmailInput] = useState("");
@@ -186,7 +192,7 @@ function App() {
 
             if (data && data.user) {
                 setUserEmail(data.user.email);
-                const fullName = data.user.user_metadata?.full_name || data.user.email.split('@')[0];
+                const fullName = data.user.user_metadata ? .full_name || data.user.email.split('@')[0];
                 setUserName(fullName);
 
                 if (data.user.email === 'admin@example.com') {
@@ -202,17 +208,17 @@ function App() {
 
     const handleSignup = async() => {
         try {
-            const { data, error } = await supabase.auth.signUp({
+            const { _data, error } = await supabase.auth.signUp({
                 email: emailInput.trim(),
                 password: passInput,
                 options: {
-                    data: { full_name: fullNameInput, role: emailInput.trim() === 'admin@example.com' ? 'admin' : 'user' }
+                    _data: { full_name: fullNameInput, role: emailInput.trim() === 'admin@example.com' ? 'admin' : 'user' }
                 }
             });
 
             if (error) throw error;
 
-            const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
+            const { _data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
                 email: emailInput.trim(),
                 password: passInput,
             });
@@ -220,7 +226,7 @@ function App() {
             if (loginError) throw loginError;
 
             setUserEmail(loginData.user.email);
-            setUserName(loginData.user.user_metadata?.full_name || emailInput.split('@')[0]);
+            setUserName(loginData.user.user_metadata ? .full_name || emailInput.split('@')[0]);
 
             if (loginData.user.email === 'admin@example.com') {
                 setView('admin');
@@ -238,7 +244,8 @@ function App() {
 
     if (view === 'admin_dashboard' || view === 'admin') {
         return <AdminPanel onLogout = {
-            () => setView('landing') }
+            () => setView('landing')
+        }
         />;
     }
 
@@ -246,7 +253,8 @@ function App() {
         div className = "app-shell" > {
             isMenuOpen && < div className = "menu-overlay"
             onClick = {
-                () => setIsMenuOpen(false) }
+                () => setIsMenuOpen(false)
+            }
             />}
 
             <
@@ -254,7 +262,8 @@ function App() {
             <
             button className = "menu-close-btn"
             onClick = {
-                () => setIsMenuOpen(false) } >
+                () => setIsMenuOpen(false)
+            } >
             <
             IoMdArrowBack / >
             <
@@ -265,8 +274,8 @@ function App() {
             <
             div className = "avatar-circle" > { userName ? userName.charAt(0).toUpperCase() : 'B' } <
             /div> <
-            h3 className = "menu-user-name" > { userName || "Benjoe Magpantay" } < /h3> <
-            /div>
+            h3 className = "menu-user-name" > { userName || "Benjoe Magpantay" } < /h3> < /
+            div >
 
             <
             nav className = "menu-links" > {
@@ -277,8 +286,7 @@ function App() {
                             setView(item.id);
                             setIsMenuOpen(false);
                         }
-                    } >
-                    { item.label } <
+                    } > { item.label } <
                     /button>
                 ))
             } <
@@ -294,8 +302,8 @@ function App() {
                 }
             } >
             Log out <
-            /button> <
-            /div>
+            /button> < /
+            div >
 
             <
             main className = "view-container" > {
@@ -309,11 +317,13 @@ function App() {
                     <
                     button className = "btn-primary"
                     onClick = {
-                        () => setView('signup') } > Sign up < /button> <
+                        () => setView('signup')
+                    } > Sign up < /button> <
                     button className = "btn-outline"
                     onClick = {
-                        () => setView('login') } > Login < /button> <
-                    /div> <
+                        () => setView('login')
+                    } > Login < /button> < /
+                    div > <
                     /div>
                 )
             }
@@ -330,31 +340,35 @@ function App() {
                     className = "line-input"
                     value = { fullNameInput }
                     onChange = {
-                        (e) => setFullNameInput(e.target.value) }
+                        (e) => setFullNameInput(e.target.value)
+                    }
                     /> <
                     label > Email < /label> <
                     input type = "text"
                     className = "line-input"
                     value = { emailInput }
                     onChange = {
-                        (e) => setEmailInput(e.target.value) }
+                        (e) => setEmailInput(e.target.value)
+                    }
                     /> <
                     label > Password < /label> <
                     input type = "password"
                     className = "line-input"
                     value = { passInput }
                     onChange = {
-                        (e) => setPassInput(e.target.value) }
+                        (e) => setPassInput(e.target.value)
+                    }
                     /> <
                     button className = "btn-white-round"
                     onClick = { handleSignup } > Sign Up < /button> <
                     p className = "footer-text" >
                     Already have an account ? < span className = "link-text"
                     onClick = {
-                        () => setView('login') } > Login < /span> <
-                    /p> <
-                    /div> <
-                    /div>
+                        () => setView('login')
+                    } > Login < /span> < /
+                    p > <
+                    /div> < /
+                    div >
                 )
             }
 
@@ -370,22 +384,25 @@ function App() {
                     className = "line-input"
                     value = { emailInput }
                     onChange = {
-                        (e) => setEmailInput(e.target.value) }
+                        (e) => setEmailInput(e.target.value)
+                    }
                     /> <
                     label > Password < /label> <
                     input type = "password"
                     className = "line-input"
                     value = { passInput }
                     onChange = {
-                        (e) => setPassInput(e.target.value) }
+                        (e) => setPassInput(e.target.value)
+                    }
                     /> <
                     button className = "btn-white-round"
                     onClick = { handleLogin } > Log In < /button> <
                     p className = "footer-text" >
-                    Don 't have an account? <span className="link-text" onClick={() => setView('signup ')}>Register</span> <
-                    /p> <
-                    /div> <
-                    /div>
+                    Don 't have an account? <span className="link-text" onClick={() => setView('
+                    signup ')}>Register</span> < /
+                    p > <
+                    /div> < /
+                    div >
                 )
             }
 
@@ -397,10 +414,11 @@ function App() {
                     <
                     button className = "menu-icon"
                     onClick = {
-                        () => setIsMenuOpen(true) } > ☰ < /button> <
+                        () => setIsMenuOpen(true)
+                    } > ☰ < /button> <
                     h1 className = "logo-text-dash" > Open < span className = "gov-red" > GOV < /span> 24/
-                    7 < /h1> <
-                    /header> <
+                    7 < /h1> < /
+                    header > <
                     div className = "stat-list" >
                     <
                     StatCard icon = "📝"
@@ -423,8 +441,8 @@ function App() {
                     <
                     /div> <
                     MobileNav setView = { setView }
-                    /> <
-                    /div>
+                    /> < /
+                    div >
                 )
             }
 
@@ -436,16 +454,18 @@ function App() {
                     <
                     IoMdArrowBack className = "back-btn"
                     onClick = {
-                        () => setView('dashboard') }
+                        () => setView('dashboard')
+                    }
                     /> <
-                    h2 > Projects < /h2> <
-                    /div> <
+                    h2 > Projects < /h2> < /
+                    div > <
                     div className = "filter-bar" > {
                         ['All', 'Ongoing', 'Completed'].map(f => ( <
                             button key = { f }
                             className = { projectFilter === f ? 'active' : '' }
                             onClick = {
-                                () => setProjectFilter(f) } > { f } < /button>
+                                () => setProjectFilter(f)
+                            } > { f } < /button>
                         ))
                     } <
                     /div> <
@@ -456,15 +476,18 @@ function App() {
                             ProjectCard key = { proj.id }
                             project = { proj }
                             onViewDetails = {
-                                (p) => { setSelectedProject(p);
-                                    setView('project_details'); } }
+                                (p) => {
+                                    setSelectedProject(p);
+                                    setView('project_details');
+                                }
+                            }
                             />
                         ))
                     } <
                     /div> <
                     MobileNav setView = { setView }
-                    /> <
-                    /div>
+                    /> < /
+                    div >
                 )
             }
 
@@ -476,10 +499,11 @@ function App() {
                     <
                     IoMdArrowBack className = "back-btn"
                     onClick = {
-                        () => setView('projects') }
+                        () => setView('projects')
+                    }
                     /> <
-                    h2 > Project Details < /h2> <
-                    /div> <
+                    h2 > Project Details < /h2> < /
+                    div > <
                     div className = "details-scroll-area" >
                     <
                     ProjectCard project = { selectedProject }
@@ -487,15 +511,17 @@ function App() {
                     /> <
                     div className = "project-image-box"
                     style = {
-                        { padding: '10px 0', fontSize: '15px', color: '#fff' } } >
+                        { padding: '10px 0', fontSize: '15px', color: '#fff' }
+                    } >
                     <
                     p > < strong > Location: < /strong> {selectedProject.location || 'Not Specified'}</p >
                     <
                     p > < strong > Contractor: < /strong> {selectedProject.contractor || 'Not Specified'}</p >
                     <
                     p style = {
-                        { marginTop: '10px' } } > { selectedProject.description || 'No project description added yet.' } < /p> <
-                    /div> <
+                        { marginTop: '10px' }
+                    } > { selectedProject.description || 'No project description added yet.' } < /p> < /
+                    div > <
                     h3 > Budget Breakdown < /h3> <
                     table className = "budget-table" >
                     <
@@ -504,22 +530,22 @@ function App() {
                     tr >
                     <
                     th > Category < /th> <
-                    th > Allocated Gross Amount < /th> <
-                    /tr> <
+                    th > Allocated Gross Amount < /th> < /
+                    tr > <
                     /thead> <
                     tbody >
                     <
                     tr >
                     <
                     td > Total Project Value < /td> <
-                    td > ₱{ parseFloat(selectedProject.total_budget || 0).toLocaleString() } < /td> <
-                    /tr> <
-                    /tbody> <
-                    /table> <
+                    td > ₱{ parseFloat(selectedProject.total_budget || 0).toLocaleString() } < /td> < /
+                    tr > <
+                    /tbody> < /
+                    table > <
                     /div> <
                     MobileNav setView = { setView }
-                    /> <
-                    /div>
+                    /> < /
+                    div >
                 )
             }
 
@@ -527,10 +553,11 @@ function App() {
                 view === 'mandate' && ( <
                     InfoPage title = "Mandate"
                     onBack = {
-                        () => setView('dashboard') } >
+                        () => setView('dashboard')
+                    } >
                     <
-                    p > OpenGov24 / 7 is mandated to serve as a digital transparency and financial information management platform... < /p> <
-                    /InfoPage>
+                    p > OpenGov24 / 7 is mandated to serve as a digital transparency and financial information management platform... < /p> < /
+                    InfoPage >
                 )
             }
 
@@ -538,10 +565,11 @@ function App() {
                 view === 'mission' && ( <
                     InfoPage title = "Mission"
                     onBack = {
-                        () => setView('dashboard') } >
+                        () => setView('dashboard')
+                    } >
                     <
-                    p > To deliver an open, accessible, and user - friendly platform... < /p> <
-                    /InfoPage>
+                    p > To deliver an open, accessible, and user - friendly platform... < /p> < /
+                    InfoPage >
                 )
             }
 
@@ -549,10 +577,11 @@ function App() {
                 view === 'vision' && ( <
                     InfoPage title = "Vision"
                     onBack = {
-                        () => setView('dashboard') } >
+                        () => setView('dashboard')
+                    } >
                     <
-                    p > To become a reliable digital governance platform... < /p> <
-                    /InfoPage>
+                    p > To become a reliable digital governance platform... < /p> < /
+                    InfoPage >
                 )
             }
 
@@ -560,10 +589,11 @@ function App() {
                 view === 'privacy' && ( <
                     InfoPage title = "Privacy Policy"
                     onBack = {
-                        () => setView('dashboard') } >
+                        () => setView('dashboard')
+                    } >
                     <
-                    p > OpenGov24 / 7 respects the privacy of its users... < /p> <
-                    /InfoPage>
+                    p > OpenGov24 / 7 respects the privacy of its users... < /p> < /
+                    InfoPage >
                 )
             }
 
@@ -571,14 +601,15 @@ function App() {
                 view === 'about' && ( <
                     InfoPage title = "About"
                     onBack = {
-                        () => setView('dashboard') } >
+                        () => setView('dashboard')
+                    } >
                     <
-                    p > OpenGov24 / 7 is a municipal transparency and financial information management system... < /p> <
-                    /InfoPage>
+                    p > OpenGov24 / 7 is a municipal transparency and financial information management system... < /p> < /
+                    InfoPage >
                 )
             } <
-            /main> <
-            /div>
+            /main> < /
+            div >
         );
     }
 
