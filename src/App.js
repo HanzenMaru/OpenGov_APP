@@ -137,6 +137,7 @@ const InfoPage = ({ title, onBack, children }) => ( <
 function App() {
     const [view, setView] = useState('landing');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    // eslint-disable-next-line no-unused-vars
     const [userEmail, setUserEmail] = useState("");
     const [userName, setUserName] = useState("");
     const [fullNameInput, setFullNameInput] = useState("");
