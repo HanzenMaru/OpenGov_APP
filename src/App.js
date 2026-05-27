@@ -192,7 +192,7 @@ function App() {
 
             if (data && data.user) {
                 setUserEmail(data.user.email);
-                const fullName = data.user.user_metadata ? .full_name || data.user.email.split('@')[0];
+                const fullName = data.user.user_metadata?.full_name || data.user.email.split('@')[0];
                 setUserName(fullName);
 
                 if (data.user.email === 'admin@example.com') {
@@ -226,7 +226,7 @@ function App() {
             if (loginError) throw loginError;
 
             setUserEmail(loginData.user.email);
-            setUserName(loginData.user.user_metadata ? .full_name || emailInput.split('@')[0]);
+            setUserName(loginData.user.user_metadata?.full_name || emailInput.split('@')[0]);
 
             if (loginData.user.email === 'admin@example.com') {
                 setView('admin');
@@ -396,13 +396,12 @@ function App() {
                     }
                     /> <
                     button className = "btn-white-round"
-                    onClick = { handleLogin } > Log In < /button> <
+                    onClick = { handleLogin } > Log In < /button> < <
                     p className = "footer-text" >
-                    Don 't have an account? <span className="link-text" onClick={() => setView('
-                    signup ')}>Register</span> < /
-                    p > <
-                    /div> < /
-                    div >
+                    Don 't have an account? <span className="link-text" onClick={() => setView('signup ')}>Register</span> <
+                    /p> <
+                    /div> <
+                    /div>
                 )
             }
 
