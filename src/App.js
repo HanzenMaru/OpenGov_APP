@@ -396,8 +396,8 @@ function App() {
                     }
                     /> <
                     button className = "btn-white-round"
-                    onClick = { handleLogin } > Log In < /button> 
-p className = "footer-text" >
+                    onClick = { handleLogin } > Log In < /button> <
+                    p className = "footer-text" >
                     Don 't have an account? <span className="link-text" onClick={() => setView('signup ')}>Register</span> <
                     /p> <
                     /div> <
