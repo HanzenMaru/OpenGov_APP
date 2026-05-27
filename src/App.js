@@ -137,7 +137,7 @@ const InfoPage = ({ title, onBack, children }) => ( <
 function App() {
     const [view, setView] = useState('landing');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [_userEmail, setUserEmail] = useState("");
+    const [userEmail, setUserEmail] = useState("");
     const [userName, setUserName] = useState("");
     const [fullNameInput, setFullNameInput] = useState("");
     const [emailInput, setEmailInput] = useState("");
@@ -208,24 +208,23 @@ function App() {
 
     const handleSignup = async() => {
         try {
-            const { data: _, error } = await supabase.auth.signUp({
+            const { error } = await supabase.auth.signUp({
                 email: emailInput.trim(),
                 password: passInput,
                 options: {
-                    _data: { full_name: fullNameInput, role: emailInput.trim() === 'admin@example.com' ? 'admin' : 'user' }
+                    data: { full_name: fullNameInput, role: emailInput.trim() === 'admin@example.com' ? 'admin' : 'user' }
                 }
             });
 
             if (error) throw error;
 
-            const { _data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
+            const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
                 email: emailInput.trim(),
                 password: passInput,
             });
 
             if (loginError) throw loginError;
 
-            setUserEmail(loginData.user.email);
             setUserName(loginData.user.user_metadata?.full_name || emailInput.split('@')[0]);
 
             if (loginData.user.email === 'admin@example.com') {
